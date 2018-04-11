@@ -12,10 +12,10 @@ difference(){
     rotate([0,0,30])
     difference() {
         translate([0, 0, -1])
-            cylinder(h = 15, r1 = 5, r2 = 5);
-        translate([0, 5, 7])
+            cylinder(h = 15, r1 = 2.5, r2 = 2.5);
+        translate([0, 4.5, 7])
             cube([10,6,15], center = true);
-        translate([0, -5, 7])
+        translate([0, -4.5, 7])
             cube([10,6,15], center = true);
     }
  
@@ -27,32 +27,37 @@ difference(){
         scale([1.2, 0.5])
         cylinder(h = 11, r1 = 8, r2 = 5, $fn = 120);
         
+        rotate([0, 0, i +30])
+        translate([-7.2,0,-1])
+        scale([1.4, 0.6])
+          cylinder(h = 11, r1 = 1.4, r2 = 0.8, $fn = 72);
+        
         rotate([0, 0, i + 30])
         translate([-17,0,-1])
-        scale([1.6, 0.6])
+        scale([1.4, 0.6])
         cylinder(h = 11, r1 = 5, r2 = 3, $fn = 72);
         
-        rotate([0, 0, i + 16])
+        rotate([0, 0, i + 16.5])
         translate([-20,0,-1])
-        scale([1.6, 0.6])
+        scale([1.4, 0.5])
         cylinder(h = 11, r1 = 3, r2 = 2, $fn = 36);
         
-        rotate([0, 0, i - 16])
+        rotate([0, 0, i - 16.5])
         translate([-20,0,-1])
-        scale([1.6, 0.6])
+        scale([1.4, 0.5])
         cylinder(h = 11, r1 = 3, r2 = 2, $fn = 36);
         //rotate([0, 0, i])
         //translate([-22,0,-1])
         //cylinder(h = 11, r1 = 2, r2 = 2, $fn = 36);
     }
- 
-    rotate_extrude(convexity = 10, $fn = 100)
+
+/*    rotate_extrude(convexity = 10, $fn = 100)
         translate([14, 0, 0])
         scale([1.6, 0.6])
         circle(r = 4, $fn = 100);
-    
+*/    
     translate([0, 0, 5])
-    rotate_extrude(convexity = 10, $fn = 100)
+    rotate_extrude(convexity = 11, $fn = 100)
         translate([28, 0, 0])
         scale([0.6, 1.6])
         circle(r = 6, $fn = 100);
