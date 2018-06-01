@@ -10,7 +10,12 @@ module MotorMount(r,h){
                 cylinder(h = h+2 , r1 =4, r2 = 4, $fn = 180,$fs = 1);
             
             translate([-r*2, -r-2, 0]){
-            cube([r*4,8,h+2]);
+                difference(){
+                    cube([r*4,8,h+2]);
+                    translate([5, 2, h+1.5]) {
+                       text("3.0",size = 5,  font = "Liberation Sans");
+                    }
+                }
             }
             translate([-r, -r-2, 0]){
             cube([r*2,r,h]);
@@ -21,31 +26,36 @@ module MotorMount(r,h){
             cylinder(h = h+2 , r1 =r + 2, r2 = r + 2, $fn = 180,$fs = 1);
             
             //screw wings
-            translate([r+5 ,0, 0]){
+            translate([r+2.5 ,0, 0]){
                 cylinder(h = h+2 , r1 =4, r2 = 4, $fn = 180,$fs = 1);
-                translate([-4 ,-4, 0])
-                cube([4,8,h-1]);
+                /*translate([-4 ,-4, 0]){
+                    cube([4,8,h-1]);
+                    w_points =[[0,0],[10,0],[2,8],[1,8]];
+                    translate([1 ,-5, 0])
+                    polygon(w_points,10);
+                }*/
             }
-            translate([-r-5 ,0, 0]){
+            translate([-r-2.5 ,0, 0]){
                 cylinder(h = h+2 , r1 =4, r2 = 4, $fn = 180,$fs = 1);
                 translate([0 ,-4, 0])
                 cube([4,8,h-1]);
             }
             //wire bump
-            translate([-6.5, r, 0])
-                cube([13, 5, h-3]);
+            color([1,1,0])
+            translate([-10, r-2, 0])
+                cube([20, 7, h-3]);
         }
         translate([0,0,2])
         cylinder(h = h + 1 , r1 =r, r2 = r, $fn = 180,$fs = 1);
         
         //wire bump cutout
-        translate([-5.5,r-1,2])
-        cube([11,5,h + 8]);    
+        translate([-9,r-6,2])
+        cube([18,10,h + 8]);    
         
         //wing screws
-        translate([r + 5, 0, -5])
+        translate([r + 2.5, 0, -5])
         cylinder(h = h+10 , r1 = 1.5, r2 = 1.5, $fn = 180,$fs = 1);
-        translate([-r - 5, 0, -5])
+        translate([-r - 2.5, 0, -5])
         cylinder(h = h+10 , r1 = 1.5, r2 = 1.5, $fn = 180,$fs = 1);
         
     //base screws
@@ -99,10 +109,10 @@ difference(){
     difference() {
         color([0,1,1])
         translate([0, 0, -1])
-            cylinder(h = 15, r1 = 2.6, r2 = 2.6);
-        translate([0, 3.9, 5])
+            cylinder(h = 15, r1 = 2.7, r2 = 2.9);
+        translate([0, 4.1, 5])
             cube([10,5,15], center = true);
-        translate([0, -3.9, 5])
+        translate([0, -4.1, 5])
             cube([10,5,15], center = true);
     }
     
