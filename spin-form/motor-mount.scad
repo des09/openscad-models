@@ -13,7 +13,9 @@ module MotorMount(r,h){
                 difference(){
                     cube([r*4,8,h+2]);
                     translate([5, 2, h+1.5]) {
+                         linear_extrude(height = 0.7){
                        text("3.0",size = 5,  font = "Liberation Sans");
+                         }
                     }
                 }
             }
@@ -99,9 +101,9 @@ difference(){
         //shaft key hole support
         color([1,0,1])
         rotate([90,90,45]){
-            translate([-6, 0, -7])
+            translate([-6.5, 0, -7])
             cylinder(h = 14, r1 = 4, r2 = 4, $fn = 90,$fs = 1);
-            translate([-5, -2.5, -7])
+            translate([-4, -2.5, -7])
             cube([5,5,14]);
         }
     }
@@ -118,7 +120,7 @@ difference(){
     
     //shaft key holes
     rotate([90,90,45])
-            translate([-6, 0, -10])
+            translate([-6.5, 0, -10])
             cylinder(h = 20, r1 = 1.9, r2 = 1.9, $fn = 90,$fs = 1);
 }
 }
