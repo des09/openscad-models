@@ -12,8 +12,8 @@ module MotorMount(r,h){
             translate([-r*2, -r-2, 0]){
                 difference(){
                     cube([r*4,8,h+2]);
-                    translate([5, 2, h+1.5]) {
-                         linear_extrude(height = 0.7){
+                    translate([5, 2, h+1.4]) {
+                         linear_extrude(height = 1){
                        text("3.0",size = 5,  font = "Liberation Sans");
                          }
                     }
