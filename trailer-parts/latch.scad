@@ -1,4 +1,4 @@
-module tang(t,r,w){
+module tang(t,r,w,b){
  
      difference(){
          union(){
@@ -15,8 +15,8 @@ module tang(t,r,w){
      
  }
     // 3 cutouts
-      translate([-w,-w,-1])
-        cube([w*2,w*2,w+2]);
+      translate([-b / 2,-b/2,-1])
+        cube([b,b,w+2]);
      
  
       translate([-t/2,0,-1])
@@ -49,15 +49,14 @@ module yoke(r,w,d){
     rs = (w+2) * 0.5;
 
     rotate([90,0,0]){
-
+                
+            
         difference(){
             //body
-            cube([r, r *2.5, w * 3 + 2]);
+            cube([r, r *2.5 , w * 3 ]);
             
             //slot for lever
-            translate([-1,-1,w ])
-                cube([r + 2, 4*d  + 1, rs *2 ]);    
-            //concave in slot
+            /*concave in slot
                 translate([r/4 , 4*d + w , w + rs ]){
                     rotate([90,0,90]){
                         hull(){
@@ -67,14 +66,28 @@ module yoke(r,w,d){
                         }
                     }
                 }
-        
-        // rod hole
-        translate([r/2 - w ,1.5*r + 1, (w * 1.5 + 1) -w ])
-            color([1,0.5,1])
-                cube([2*w,r,2*w]);        
-        //dowel hole    
-        translate([r/2,r/2 ,-1])
-            cylinder(h=w * 3 + 4 , r=w-1 
+        */
+            // rod hole
+            translate([r/2 - w ,1.5*r + 1, (w * 1.5 + 1) -w ])
+                color([1,0.5,1])
+                    cube([2*w,r,2*w]);        
+            //dowel hole    
+            translate([r/2,r/2 ,-1]){
+                cylinder(h=w * 3 + 4 , r=w-1 , $fn= 50);
+                translate([0,0 ,w]){
+                    cylinder(h=w, r1=r*0.7, r2=r*0.7);
+                }
+            }
+            
+            translate([-1,-60,-1])
+            rotate([0,0,45]){
+                cube([48,50,w*4]);
+                translate([12,-18,0])
+                color([1,0,1])
+                    cube([50,50,w*4]);
+            }
+        }
+            
     }    
 } 
 
@@ -89,16 +102,16 @@ translate([24,-30,0]){
 
 translate([0,-58,0]){
     translate([0,15,0])
-    tang(40,20,5);
+    tang(30,20,5,8);
 
     translate([7,0,0])
     yoke(20,6,4);
 
     translate([0,-2,0])
-    cylinder(h=6 * 3 + 4 , r=6-1.3, $fn= 50); 
+    cylinder(h=6 * 3 + 2 , r=6-1.3, $fn= 50); 
 
     translate([0,-14,0])
-    cylinder(h=6 * 3 + 4 , r=6-1.3, $fn= 50); 
+    cylinder(h=6 * 3 + 2 , r=6-1.3, $fn= 50); 
 
     translate([-27,0,0])
     yoke(20,6,4);
